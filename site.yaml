@@ -1,0 +1,19 @@
+- hosts: localhost
+  tasks:
+    - name: Ensure Docker is running
+      service:
+        name: docker
+        state: started
+
+    - name: Pull the futurequest image
+      docker_image:
+        name: futurequest
+        source: local
+
+    - name: Run the futurequest container
+      docker_container:
+        name: futurequest
+        image: futurequest
+        state: started
+        ports:
+          - "7000:80"

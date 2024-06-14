@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: futurequest-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: futurequest
+  template:
+    metadata:
+      labels:
+        app: futurequest
+    spec:
+      containers:
+      - name: futurequest
+        image: e09ab991e1ef # Use the built Docker image
+        ports:
+        - containerPort: 7000
